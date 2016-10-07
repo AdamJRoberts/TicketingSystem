@@ -1,0 +1,49 @@
+﻿
+@model IEnumerable<TicketingSystem.Models.Appointment>
+
+
+<h2>Ticket</h2>
+<p>
+    @Html.ActionLink("Add Appointment", "New")
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Time)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Time)
+                </td>
+                <td>
+                    @foreach (var appointment in Model)
+                    {
+                        <li>
+                            @Html.ActionLink("Edit", "Edit", new { id = appointment.Id }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = appointment.Id })
+                        </li>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

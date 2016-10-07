@@ -1,0 +1,23 @@
+﻿@model TicketingSystem.Models.Ticket
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<p>
+    Are you sure you would like to delete this video?
+</p>
+<ul>
+    <li>Email: @Model.Email</li>
+    <li>Subject: @Model.Subject</li>
+</ul>
+@using (Html.BeginForm("DoDelete", "Tickets", FormMethod.Post))
+{
+
+    @Html.HiddenFor(m => m.Id)
+    <input type="submit" class="btn btn-danger" value="Yes, Delete it!" />
+    @Html.ActionLink("Cancel", "Index")
+}

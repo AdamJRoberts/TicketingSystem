@@ -1,0 +1,13 @@
+﻿@model TicketingSystem.Models.Appointment
+
+@{
+    ViewBag.Title = "New";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>New Appointment</h2>
+
+@using (Html.BeginForm("Add", "Appointments", FormMethod.Post, new { @class = "form" }))
+{
+    Html.RenderPartial("_AppointmentForm");
+}
