@@ -21,23 +21,15 @@ namespace WebApplication1.Controllers
 
         public async Task<ActionResult> Index(string stringName)
         {
-            //var user = User.Identity.GetUserName();
-            //if (user.Equals(""))
-            //{
-            //    return RedirectToAction("Index", new RouteValueDictionary(
-            //        new { controller = "Account/Login", action = "Home" })
-            //    );
-            //}
-            //var manager = new UserManager<ApplicationUser>(new Microsoft.AspNet.Identity.EntityFramework.UserStore<ApplicationUser>(new ApplicationDbContext()));
-            //var currentUser = manager.FindById(User.Identity.GetUserId());
-            //if (currentUser.isAdmin.Equals("admin"))
-            //{
-            //    return RedirectToAction("Index", new RouteValueDictionary(
-            //    new { controller = "Appointments/Index", action = "Home" })
-            //);
-            //}
-            //else
-            //{
+            var user = User.Identity.GetUserName();
+            if (user.Equals(""))
+            {
+                return RedirectToAction("Index", new RouteValueDictionary(
+                    new { controller = "Account/Login", action = "Home" })
+                );
+            }
+            else
+            {
                 var appointments = from m in _dbContext.Appointments
                                    select m;
                 if (!string.IsNullOrEmpty(stringName))
@@ -49,7 +41,7 @@ namespace WebApplication1.Controllers
 
 
 
-        //}
+        }
         public ActionResult New()
         {
             return View();
