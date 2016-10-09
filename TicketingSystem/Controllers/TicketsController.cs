@@ -1,4 +1,6 @@
-﻿using System.Linq;
+﻿using System.Data.Entity;
+using System.Linq;
+using System.Threading.Tasks; 
 using System.Web.Mvc;
 using TicketingSystem.Models;
 
@@ -12,11 +14,15 @@ public class TicketsController : Controller
     }
 
     // GET: Tickets
-    public ActionResult Index()
+    public async Task<ActionResult> Index(string stringName) 
     {
-        var tickets = _dbContext.Tickets.ToList();
-
-        return View(tickets);
+        var tickets = from m in _dbContext.Tickets 
+                      select m;
+        if (!string.IsNullOrEmpty(stringName))
+        {
+            tickets = tickets.Where(s => s.Email.Contains(stringName)); 
+        }
+        return View(await tickets.ToListAsync()); 
     }
     public ActionResult New()
     {

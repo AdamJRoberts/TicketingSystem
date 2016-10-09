@@ -39,15 +39,13 @@
                     @Html.DisplayFor(modelItem => item.Status)
                 </td>
                 <td>
-                    @foreach (var ticket in Model)
-                    {
-                        <li>
-                            @Html.ActionLink("Edit", "Edit", new { id = ticket.Id }) |
-                            @Html.ActionLink("Delete", "Delete", new { id = ticket.Id })
-                        </li>
-                    }
+                    <div>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                    </div>
                 </td>
             </tr>
         }
     </tbody>
 </table>
+

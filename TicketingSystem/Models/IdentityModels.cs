@@ -15,7 +15,12 @@ namespace TicketingSystem.Models
 
         [Required]
         public string LastName { get; set; }
-        public bool isAdmin {get;set;}
+        public bool isAdmin { get; set; }
+
+        public string security1 { get; set; } 
+        public string security2 { get; set; }
+        public string securityq1 { get; set; }
+        public string securityq2{get;set;}
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType

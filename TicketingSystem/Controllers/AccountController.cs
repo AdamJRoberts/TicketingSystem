@@ -156,8 +156,12 @@ namespace TicketingSystem.Controllers
                     FirstName = model.FirstName,
                     LastName = model.LastName,
                     Email = model.Email,
-                    UserName=model.Email, 
-                    isAdmin=model.isAdmin, 
+                    UserName = model.Email,
+                    isAdmin = model.isAdmin, 
+                    security2 = model.security2,
+                    security1 = model.security1, 
+                    securityq1 = model.securityq1, 
+                    securityq2 = model.securityq2,
                 };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)

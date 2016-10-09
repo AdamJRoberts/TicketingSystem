@@ -93,8 +93,24 @@ namespace TicketingSystem.Models
         public string Email { get; set; }
 
         public bool isAdmin { get; set; }
-    }
 
+        [Required] 
+        [Display (Name = "Security Question 1")] 
+        public string securityq1 { get;set; }
+
+        [Required]
+        [Display(Name = "Security Question 2")]
+        public string securityq2 { get; set; } 
+
+        [Required] 
+        [Display(Name= "Answer")] 
+        public string security1 { get; set; }
+
+        [Required]
+        [Display(Name = "Answer")]
+        public string security2 { get; set; } 
+
+    }
     public class ResetPasswordViewModel
     {
         [Required]

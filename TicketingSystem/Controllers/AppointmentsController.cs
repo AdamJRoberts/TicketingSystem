@@ -3,6 +3,8 @@ using System.Web.Mvc;
 using TicketingSystem.Models;
 
 using System.Collections.Generic;
+using System.Data.Entity;
+using System.Threading.Tasks;
 
 namespace WebApplication1.Controllers
 {
@@ -15,11 +17,15 @@ namespace WebApplication1.Controllers
         }
         // GET: Appointments
 
-        public ActionResult Index()
+        public async Task<ActionResult> Index(string stringName)
         {
-            var appointments = _dbContext.Appointments.ToList();
-
-            return View(appointments);
+            var appointments = from m in _dbContext.Appointments
+                          select m;
+            if (!string.IsNullOrEmpty(stringName))
+            {
+                appointments = appointments.Where(s => s.Email.Contains(stringName));
+            }
+            return View(await appointments.ToListAsync());
         }
         public ActionResult New()
         {

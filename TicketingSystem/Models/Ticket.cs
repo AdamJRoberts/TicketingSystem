@@ -15,11 +15,12 @@ namespace TicketingSystem.Models
         public DateTime Date { get; set; }
         public String Email { get; set; }
         public String Subject { get; set; }
+        
         public Status Status { get; set; }
     }
     public enum Status
     {
-        Queued = 1,
+        Queued=0,
         Open,
         Resolved
     }

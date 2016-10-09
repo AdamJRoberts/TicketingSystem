@@ -1,6 +1,9 @@
-﻿@{
+﻿@using TicketingSystem.Models
+@using Microsoft.AspNet.Identity 
+@{
     ViewBag.Title = "Home Page";
 }
+
 
 <div class="jumbotron">
     <h1>SWEET</h1>
@@ -13,12 +16,17 @@
         <p>
             Click here to open a ticket or view your tickets.
         </p>
-        <p><a class="btn btn-default" href="/Tickets/Index">Click Here &raquo;</a></p>
+        <p>
+            @{
+                var manager = new UserManager<ApplicationUser>(new Microsoft.AspNet.Identity.EntityFramework.UserStore<ApplicationUser>(new ApplicationDbContext()));
+                var currentUser = manager.FindById(User.Identity.GetUserId());
+            }
+        @Html.ActionLink("Click Here ", "Index", "Tickets/Index", routeValues: new { stringName = User.Identity.GetUserName()}, htmlAttributes:null) 
     </div>
     <div class="col-md-4">
         <h2>Appointments</h2>
         <p>Click here to view your appointments.</p>
-        <p><a class="btn btn-default" href="/Appointments/Index">Click Here &raquo;</a></p>
+@Html.ActionLink("Click Here ", "Index", "Appointments/Index", routeValues: new { stringName = User.Identity.GetUserName() }, htmlAttributes: null)
     </div>
     <div class="col-md-4">
         <h2>Account</h2>

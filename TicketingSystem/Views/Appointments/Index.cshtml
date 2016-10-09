@@ -35,13 +35,10 @@
                     @Html.DisplayFor(modelItem => item.Time)
                 </td>
                 <td>
-                    @foreach (var appointment in Model)
-                    {
-                        <li>
-                            @Html.ActionLink("Edit", "Edit", new { id = appointment.Id }) |
-                            @Html.ActionLink("Delete", "Delete", new { id = appointment.Id })
-                        </li>
-                    }
+                <div>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                </div>
                 </td>
             </tr>
         }
