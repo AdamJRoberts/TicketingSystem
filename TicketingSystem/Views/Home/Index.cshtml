@@ -11,7 +11,7 @@
 </div>
 
 <div class="row">
-    @*<div class="col-md-4">
+    <div class="col-md-4">
         <h2>Tickets</h2>
         <p>
             Click here to open a ticket or view your tickets.
@@ -22,7 +22,7 @@
                             var currentUser = manager.FindById(User.Identity.GetUserId());
                         }
                     @Html.ActionLink("Click Here ", "Index", "Tickets/Index", routeValues: new { stringName = User.Identity.GetUserName()}, htmlAttributes:null)
-                </div>*@
+                </div>
                 <div class="col-md-4">
                     <h2>Appointments</h2>
                     <p>Click here to view your appointments.</p>
@@ -34,4 +34,3 @@
         <p>Click here to view and edit your account information.</p>
 @Html.ActionLink("Click Here ", "Index", "Manage", routeValues: null, htmlAttributes: null)
     </div>
-</div>
