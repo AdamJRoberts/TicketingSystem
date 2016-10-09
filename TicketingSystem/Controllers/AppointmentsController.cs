@@ -36,8 +36,8 @@ namespace WebApplication1.Controllers
             //    new { controller = "Appointments/Index", action = "Home" })
             //);
             //}
-            else
-            {
+            //else
+            //{
                 var appointments = from m in _dbContext.Appointments
                                    select m;
                 if (!string.IsNullOrEmpty(stringName))
@@ -49,7 +49,7 @@ namespace WebApplication1.Controllers
 
 
 
-        }
+        //}
         public ActionResult New()
         {
             return View();
