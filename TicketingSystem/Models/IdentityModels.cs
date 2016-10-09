@@ -35,7 +35,7 @@ namespace TicketingSystem.Models
         public DbSet<Appointment> Appointments { get; set; }
         public DbSet<Ticket> Tickets { get; set; }
         public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
+            : base("AdamsConnection", throwIfV1Schema: false)
         {
         }
 
