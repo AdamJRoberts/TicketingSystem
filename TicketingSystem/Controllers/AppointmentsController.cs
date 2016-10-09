@@ -28,13 +28,27 @@ namespace WebApplication1.Controllers
                     new { controller = "Account/Login", action = "Home" })
                 );
             }
-            var appointments = from m in _dbContext.Appointments
-                          select m;
-            if (!string.IsNullOrEmpty(stringName))
+            var manager = new UserManager<ApplicationUser>(new Microsoft.AspNet.Identity.EntityFramework.UserStore<ApplicationUser>(new ApplicationDbContext()));
+            var currentUser = manager.FindById(User.Identity.GetUserId());
+            if (currentUser.isAdmin.Equals("admin")) 
             {
-                appointments = appointments.Where(s => s.Email.Contains(stringName));
+                return RedirectToAction("Index", new RouteValueDictionary(
+                new { controller = "Appointments/Index", action = "Home" })
+            );
             }
-            return View(await appointments.ToListAsync());
+            else
+            {
+                var appointments = from m in _dbContext.Appointments
+                                   select m;
+                if (!string.IsNullOrEmpty(stringName))
+                {
+                    appointments = appointments.Where(s => s.Email.Contains(stringName));
+                }
+                return View(await appointments.ToListAsync());
+            }
+
+
+
         }
         public ActionResult New()
         {

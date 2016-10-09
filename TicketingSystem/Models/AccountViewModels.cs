@@ -92,7 +92,7 @@ namespace TicketingSystem.Models
         [Display(Name = "Email")]
         public string Email { get; set; }
 
-        public bool isAdmin { get; set; }
+        public string isAdmin { get; set; }
 
         [Required] 
         [Display (Name = "Security Question 1")] 

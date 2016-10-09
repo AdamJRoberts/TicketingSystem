@@ -15,7 +15,7 @@ namespace TicketingSystem.Models
 
         [Required]
         public string LastName { get; set; }
-        public bool isAdmin { get; set; }
+        public string isAdmin { get; set; }
 
         public string security1 { get; set; } 
         public string security2 { get; set; }
