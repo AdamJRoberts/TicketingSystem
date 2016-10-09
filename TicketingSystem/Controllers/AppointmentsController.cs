@@ -28,14 +28,14 @@ namespace WebApplication1.Controllers
                     new { controller = "Account/Login", action = "Home" })
                 );
             }
-            var manager = new UserManager<ApplicationUser>(new Microsoft.AspNet.Identity.EntityFramework.UserStore<ApplicationUser>(new ApplicationDbContext()));
-            var currentUser = manager.FindById(User.Identity.GetUserId());
-            if (currentUser.isAdmin.Equals("admin")) 
-            {
-                return RedirectToAction("Index", new RouteValueDictionary(
-                new { controller = "Appointments/Index", action = "Home" })
-            );
-            }
+            //var manager = new UserManager<ApplicationUser>(new Microsoft.AspNet.Identity.EntityFramework.UserStore<ApplicationUser>(new ApplicationDbContext()));
+            //var currentUser = manager.FindById(User.Identity.GetUserId());
+            //if (currentUser.isAdmin.Equals("admin"))
+            //{
+            //    return RedirectToAction("Index", new RouteValueDictionary(
+            //    new { controller = "Appointments/Index", action = "Home" })
+            //);
+            //}
             else
             {
                 var appointments = from m in _dbContext.Appointments
