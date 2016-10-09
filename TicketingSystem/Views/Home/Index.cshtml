@@ -16,11 +16,6 @@
         <p>
             Click here to open a ticket or view your tickets.
         </p>
-
-                        @{
-                            var manager = new UserManager<ApplicationUser>(new Microsoft.AspNet.Identity.EntityFramework.UserStore<ApplicationUser>(new ApplicationDbContext()));
-                            var currentUser = manager.FindById(User.Identity.GetUserId());
-                        }
         <p>   @Html.ActionLink("Click Here ", "Index", "Tickets/Index", routeValues: new { stringName = User.Identity.GetUserName() }, htmlAttributes: null) </p>
 </div>
                 <div class="col-md-4">
