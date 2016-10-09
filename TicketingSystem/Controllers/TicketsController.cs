@@ -1,7 +1,9 @@
-﻿using System.Data.Entity;
+﻿using Microsoft.AspNet.Identity;
+using System.Data.Entity;
 using System.Linq;
-using System.Threading.Tasks; 
+using System.Threading.Tasks;
 using System.Web.Mvc;
+using System.Web.Routing;
 using TicketingSystem.Models;
 
 public class TicketsController : Controller
@@ -16,6 +18,13 @@ public class TicketsController : Controller
     // GET: Tickets
     public async Task<ActionResult> Index(string stringName) 
     {
+        var user = User.Identity.GetUserName(); 
+        if (user.Equals(""))   
+        {
+            return RedirectToAction("Index", new RouteValueDictionary(
+                new { controller = "Account/Login", action = "Home" })
+            );
+        }
         var tickets = from m in _dbContext.Tickets 
                       select m;
         if (!string.IsNullOrEmpty(stringName))
@@ -23,6 +32,12 @@ public class TicketsController : Controller
             tickets = tickets.Where(s => s.Email.Contains(stringName)); 
         }
         return View(await tickets.ToListAsync()); 
+    }
+    public ActionResult Index2()
+    {
+        var videos = _dbContext.Tickets.ToList();
+
+        return View(videos);
     }
     public ActionResult New()
     {
@@ -55,6 +70,7 @@ public class TicketsController : Controller
         ticketInDb.Date = ticket.Date;
         ticketInDb.Subject = ticket.Subject;
         ticketInDb.Status = ticket.Status;
+        ticketInDb.Description = ticket.Description;
         _dbContext.SaveChanges();
 
         return RedirectToAction("Index");

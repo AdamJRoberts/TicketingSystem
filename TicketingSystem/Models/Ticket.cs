@@ -15,6 +15,7 @@ namespace TicketingSystem.Models
         public DateTime Date { get; set; }
         public String Email { get; set; }
         public String Subject { get; set; }
+        public String Description { get; set; }
         
         public Status Status { get; set; }
     }

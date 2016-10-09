@@ -138,5 +138,21 @@ namespace TicketingSystem.Models
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
+
+        [Required] 
+        [Display(Name = "Security Question 1")] 
+        public string secure1 { get; set; }
+
+        [Required]
+        [Display(Name = "Security Question 2")]
+        public string secure2 { get; set; }
+
+        [Required]
+        [Display(Name = "Security Answer 1")]
+        public string answer1 { get; set; }
+
+        [Required]
+        [Display(Name = "Security Answer 2")]
+        public string answer2 { get; set; }
     }
 }

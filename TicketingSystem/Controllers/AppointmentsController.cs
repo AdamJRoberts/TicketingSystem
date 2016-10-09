@@ -5,6 +5,8 @@ using TicketingSystem.Models;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Threading.Tasks;
+using Microsoft.AspNet.Identity;
+using System.Web.Routing;
 
 namespace WebApplication1.Controllers
 {
@@ -19,6 +21,13 @@ namespace WebApplication1.Controllers
 
         public async Task<ActionResult> Index(string stringName)
         {
+            var user = User.Identity.GetUserName();
+            if (user.Equals(""))
+            {
+                return RedirectToAction("Index", new RouteValueDictionary(
+                    new { controller = "Account/Login", action = "Home" })
+                );
+            }
             var appointments = from m in _dbContext.Appointments
                           select m;
             if (!string.IsNullOrEmpty(stringName))
