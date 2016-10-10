@@ -3,29 +3,31 @@
 @{
     ViewBag.Title = "Home Page";
 }
+    <div class="jumbotron">
+        <h1>SWEET</h1>
+        <p class="lead">A customer service unlike any other</p>
+    </div>
+    <div>
+        <img src="http://myislandworker.com/wp-content/uploads/2016/06/helpdesk.png" alt="" style="width:1000px;height:228px;">
+    </div>
 
 
-<div class="jumbotron">
-    <h1>SWEET</h1>
-    <p class="lead">A customer service unlike any other</p>
-</div>
-
-<div class="row">
-    <div class="col-md-4">
-        <h2>Tickets</h2>
-        <p>
-            Click here to open a ticket or view your tickets.
-        </p>
-        <p>   @Html.ActionLink("Click Here ", "Index", "Tickets/Index", routeValues: new { stringName = User.Identity.GetUserName() }, htmlAttributes: null) </p>
+    <div class="row">
+        <div class="col-md-4">
+            <h2>Tickets</h2>
+            <p>
+                Click here to open a ticket or view your tickets.
+            </p>
+            <p>   @Html.ActionLink("Click Here ", "Index", "Tickets/Index", routeValues: new { stringName = User.Identity.GetUserName() }, htmlAttributes: null) </p>
+        </div>
+        <div class="col-md-4">
+            <h2>Appointments</h2>
+            <p>Click here to view your appointments.</p>
+            <p>@Html.ActionLink("Click Here ", "Index", "Appointments/Index", routeValues: new { stringName = User.Identity.GetUserName() }, htmlAttributes: null) </p>
+        </div>
+        <div class="col-md-4">
+            <h2>Account</h2>
+            <p>Click here to view and edit your account information.</p>
+            <p> @Html.ActionLink("Click Here ", "Index", "Manage", routeValues: null, htmlAttributes: null) </p>
+        </div>
     </div>
-    <div class="col-md-4">
-        <h2>Appointments</h2>
-        <p>Click here to view your appointments.</p>
-        <p>@Html.ActionLink("Click Here ", "Index", "Appointments/Index", routeValues: new { stringName = User.Identity.GetUserName() }, htmlAttributes: null) </p>
-    </div>
-    <div class="col-md-4">
-        <h2>Account</h2>
-        <p>Click here to view and edit your account information.</p>
-        <p> @Html.ActionLink("Click Here ", "Index", "Manage", routeValues: null, htmlAttributes: null) </p>
-    </div>
-</div>

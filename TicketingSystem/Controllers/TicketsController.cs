@@ -1,9 +1,12 @@
 ﻿using Microsoft.AspNet.Identity;
+using System;
 using System.Data.Entity;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 using System.Web.Routing;
+using System.Web.Services.Description;
 using TicketingSystem.Models;
 
 public class TicketsController : Controller
@@ -16,7 +19,7 @@ public class TicketsController : Controller
     }
 
     // GET: Tickets
-    public async Task<ActionResult> Index(string stringName)
+    public async Task<ActionResult> Index(string stringName, string sortOrder)
     {
         var user = User.Identity.GetUserName();
         if (user.Equals(""))
