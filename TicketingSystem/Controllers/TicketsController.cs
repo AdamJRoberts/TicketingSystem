@@ -16,22 +16,22 @@ public class TicketsController : Controller
     }
 
     // GET: Tickets
-    public async Task<ActionResult> Index(string stringName) 
+    public async Task<ActionResult> Index(string stringName)
     {
-        var user = User.Identity.GetUserName(); 
-        if (user.Equals(""))   
+        var user = User.Identity.GetUserName();
+        if (user.Equals(""))
         {
             return RedirectToAction("Index", new RouteValueDictionary(
                 new { controller = "Account/Login", action = "Home" })
             );
         }
-        var tickets = from m in _dbContext.Tickets 
+        var tickets = from m in _dbContext.Tickets
                       select m;
         if (!string.IsNullOrEmpty(stringName))
         {
-            tickets = tickets.Where(s => s.Email.Contains(stringName)); 
+            tickets = tickets.Where(s => s.Email.Contains(stringName));
         }
-        return View(await tickets.ToListAsync()); 
+        return View(await tickets.ToListAsync());
     }
     public ActionResult Index2()
     {
