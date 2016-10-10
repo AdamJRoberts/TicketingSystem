@@ -19,10 +19,10 @@ namespace TicketingSystem.Models
         public string LastName { get; set; }
         public string isAdmin { get; set; }
 
-        public string security1 { get; set; } 
+        public string security1 { get; set; }
         public string security2 { get; set; }
         public string securityq1 { get; set; }
-        public string securityq2{get;set;}
+        public string securityq2 { get; set; }
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
@@ -40,19 +40,11 @@ namespace TicketingSystem.Models
         public ApplicationDbContext()
             : base("AdamsConnection", throwIfV1Schema: false)
         {
-            _schemaName = _schemaName;
         }
 
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
         }
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        {
-            Database.SetInitializer<ApplicationDbContext>(new CreateDatabaseIfNotExists<ApplicationDbContext>());
-            modelBuilder.Entity<ApplicationDbContext>().ToTable("ApplicationDB", _schemaName);
-            base.OnModelCreating(modelBuilder);
-        }
-        public DbSet<ApplicationDbContext>ApplicationDB { get; set; }
     }
 }
