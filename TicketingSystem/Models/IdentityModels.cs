@@ -4,6 +4,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System.ComponentModel.DataAnnotations;
+using System;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace TicketingSystem.Models
 {
@@ -34,14 +36,23 @@ namespace TicketingSystem.Models
     {
         public DbSet<Appointment> Appointments { get; set; }
         public DbSet<Ticket> Tickets { get; set; }
+        private string _schemaName = string.Empty;
         public ApplicationDbContext()
             : base("AdamsConnection", throwIfV1Schema: false)
         {
+            _schemaName = _schemaName;
         }
 
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
         }
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            Database.SetInitializer<ApplicationDbContext>(new CreateDatabaseIfNotExists<ApplicationDbContext>());
+            modelBuilder.Entity<ApplicationDbContext>().ToTable("ApplicationDB", _schemaName);
+            base.OnModelCreating(modelBuilder);
+        }
+        public DbSet<ApplicationDbContext>ApplicationDB { get; set; }
     }
 }
