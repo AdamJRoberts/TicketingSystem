@@ -36,12 +36,6 @@ public class TicketsController : Controller
         }
         return View(await tickets.ToListAsync());
     }
-    public ActionResult Index2()
-    {
-        var videos = _dbContext.Tickets.ToList();
-
-        return View(videos);
-    }
     public ActionResult New()
     {
         return View();
